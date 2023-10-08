@@ -1,5 +1,5 @@
 body {
-    background-image: url(assets/fundo.jpg);
+    background-image: url(https://tenor.com/pt-BR/view/website-background-gif-10980497632709790656.gif);
     background-size: 100%;    
     display: flex;
     justify-content: center;
@@ -25,8 +25,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(92, 92, 92);
+    background-color: rgba(134, 134, 134, 0.5);
+    border-color: aliceblue;
+    border: 10px;
     border-radius: 10px;
+    outline: 10px;
+    outline-color: aliceblue;
     width: 250px;
     height: 380px;
 }
@@ -41,7 +45,10 @@ body {
     width: 213px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);       
+    animation-duration: .8s; /* Duração da animação (2 segundos, por exemplo) */
+    animation-timing-function: linear; /* Função de temporização (por exemplo, ease, linear, etc.) */
+    animation-iteration-count: 1; /* Número de vezes que a animação deve repetir (opcional) */
 }
 
 table {
@@ -74,10 +81,26 @@ table {
     cursor: pointer;
 }
 
+.botao:active {
+    transform: scale(90%);
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+
 .anime {
     transform: scale(90%);
     background-color: rgb(61, 61, 61);
     color: white;
+}
+
+@keyframes fadeoutClear {
+    0% {
+        background-color: rgba(168, 39, 39, 50%);
+    }
+    100%{
+        background-color: white;
+    }
+
 }
 
 #clearbt:hover {

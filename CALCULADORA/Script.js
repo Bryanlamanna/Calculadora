@@ -8,19 +8,17 @@ function digit(char) {
         return;
     } else {
         input.innerText = `${valorAtual+char}`;
-        const button = document.querySelector(`button[id="${char}"]`);
-        if (button) {
-            
-            button.classList.add("anime"); // Adiciona a classe anime ao botão
-            setTimeout(() => {
-                button.classList.remove("anime"); // Remove a classe anime após um curto período de tempo
-            }, 300); // Ajuste o tempo conforme necessário
-        }
     }
 }
 
 function clearInput() {
-    input.innerHTML = "";
+    const visor = document.querySelector('.visor');
+    visor.style.animationName =  ('fadeoutClear');
+    setTimeout(function() {
+        visor.style.animationName = null;   
+    }, 800);
+
+    visor.innerHTML = "";
 }
 
 function solve() {
