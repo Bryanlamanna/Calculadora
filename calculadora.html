@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
-	<style>
-		body {
-    background-image: url(https://cdn.discordapp.com/attachments/856553081570852874/1160596936601108600/fundo.jpg?ex=65353d20&is=6522c820&hm=8fc084a3bcb881d0ad9567ca05dbb0f3b77313c2c716245ad76b65b2390d8f31&.jpg);
+    <style>
+        body {
+    background-image: url(https://tenor.com/pt-BR/view/website-background-gif-10980497632709790656.gif);
     background-size: 100%;    
     display: flex;
     justify-content: center;
@@ -33,8 +31,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(92, 92, 92);
+    background-color: rgba(134, 134, 134, 0.5);
+    border-color: aliceblue;
+    border: 10px;
     border-radius: 10px;
+    outline: 10px;
+    outline-color: aliceblue;
     width: 250px;
     height: 380px;
 }
@@ -49,7 +51,10 @@
     width: 213px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);       
+    animation-duration: .8s; /* Duração da animação (2 segundos, por exemplo) */
+    animation-timing-function: linear; /* Função de temporização (por exemplo, ease, linear, etc.) */
+    animation-iteration-count: 1; /* Número de vezes que a animação deve repetir (opcional) */
 }
 
 table {
@@ -82,10 +87,26 @@ table {
     cursor: pointer;
 }
 
+.botao:active {
+    transform: scale(90%);
+    background-color: rgb(61, 61, 61);
+    color: white;
+}
+
 .anime {
     transform: scale(90%);
     background-color: rgb(61, 61, 61);
     color: white;
+}
+
+@keyframes fadeoutClear {
+    0% {
+        background-color: rgba(168, 39, 39, 50%);
+    }
+    100%{
+        background-color: white;
+    }
+
 }
 
 #clearbt:hover {
@@ -110,7 +131,8 @@ table {
 }
 
 
-	</style>
+    </style>
+    <title>Calculadora [bryan]</title>
 </head>
 <body>
     <div class="container">
@@ -119,10 +141,10 @@ table {
         </div>
         <div class="calculadora">
             <div class="interface" id="interface">
-                <p class="visor" maxlen id="input"></p>
+                <p class="visor" id="input"></p>
                 <table class="teclado" id="teclado">
                     <tr>
-                        <td><button id="clearbt" onclick="clearInput()" class="botao">c</button></td>
+                        <td><button id="clearbt" onclick="clearInput()" class="botao">C</button></td>
                         <td><button id="divide" onclick="digit('/')" class="botao">/</button></td>
                         <td><button id="multiply" onclick="digit('*')" class="botao">*</button></td>
                         <td><button id="subtract" onclick="digit('-')" class="botao">-</button></td>
@@ -155,181 +177,177 @@ table {
         </div>
     </div>    
     <script>
-	    
-const input = document.getElementById("input");
-
-function digit(char) {
-    var valorAtual = input.innerText;
-
-    if (valorAtual.length > 14) {
-        return;
-    } else {
-        input.innerText = `${valorAtual+char}`;
-        const button = document.querySelector(`button[id="${char}"]`);
-        if (button) {
-            
-            button.classList.add("anime"); // Adiciona a classe anime ao botão
-            setTimeout(() => {
-                button.classList.remove("anime"); // Remove a classe anime após um curto período de tempo
-            }, 300); // Ajuste o tempo conforme necessário
+        const input = document.getElementById("input");
+        
+        function digit(char) {
+            var valorAtual = input.innerText;
+        
+            if (valorAtual.length > 14) {
+                return;
+            } else {
+                input.innerText = `${valorAtual+char}`;
+            }
         }
-    }
-}
-
-function clearInput() {
-    input.innerHTML = "";
-}
-
-function solve() {
-
-    var calculo = input.textContent;
-    if (calculo) {
-    input.innerHTML = eval(calculo);
-    } else {
-        input.innerHTML = '0';
-    }
-}
-
-function copy() {
-    navigator.clipboard.writeText(input.textContent);  
-}
-
-document.addEventListener("keydown", function(event) {
-    // Verifique se a tecla pressionada é um dígito numérico (0-9)
-    if (event.key === '0'){
-        digit(event.key);
-        var botao = document.getElementById("zero");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key == 1) {
-        digit('1');       
-        var botao = document.getElementById("one");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '2') {
-        digit('2');
-        var botao = document.getElementById("two");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '3') {
-        digit('3');
-        var botao = document.getElementById("three");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '4') {
-        digit('4');
-        var botao = document.getElementById("four");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '5') {
-        digit('5');
-        var botao = document.getElementById("five");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '6') {
-        digit('6');
-        var botao = document.getElementById("six");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '7') {
-        digit('7');
-        var botao = document.getElementById("seven");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '8') {
-        digit('8');
-        var botao = document.getElementById("eight");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '9') {
-        digit('9');
-        var botao = document.getElementById("nine");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '+') {
-        digit(event.key);
-        var botao = document.getElementById("sum");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '-') {
-        digit(event.key);
-        var botao = document.getElementById("subtract");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '*') {
-        digit(event.key);
-        var botao = document.getElementById("multiply");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '/') {
-        digit(event.key);
-        var botao = document.getElementById("divide");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === '.') {
-        digit(event.key);
-        var botao = document.getElementById("dot");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === 'Enter') {
-        solve(); 
-        var botao = document.getElementById("solvebt");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    } else if (event.key === 'Escape') {
-        clearInput(); 
-        var botao = document.getElementById("clearbt");
-        botao.classList.add("anime");
-        setTimeout(function() {
-            botao.classList.remove("anime"); 
-        }, 100);
-    }
-});
-
-document.addEventListener("keyup", function(event) {
-    // Verifique se a tecla pressionada é um dígito numérico (0-9)
-    if (event.key.match(/[0-9]/)) {
-        // Remova a classe de animação do botão correspondente quando a tecla for liberada
-        const button = document.querySelector(`button[data-key="${event.key}"]`);
-        if (button) {
-            button.classList.remove("button-pressed");
+        
+        function clearInput() {
+            const visor = document.querySelector('.visor');
+            visor.style.animationName =  ('fadeoutClear');
+            setTimeout(function() {
+                visor.style.animationName = null;   
+            }, 800);
+        
+            visor.innerHTML = "";
         }
-    }
-});
-
-
-    </script>
+        
+        function solve() {
+        
+            var calculo = input.textContent;
+            if (calculo) {
+            input.innerHTML = eval(calculo);
+            } else {
+                input.innerHTML = '0';
+            }
+        }
+        
+        function copy() {
+            navigator.clipboard.writeText(input.textContent);  
+        }
+        
+        document.addEventListener("keydown", function(event) {
+            // Verifique se a tecla pressionada é um dígito numérico (0-9)
+            if (event.key === '0'){
+                digit(event.key);
+                var botao = document.getElementById("zero");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key == 1) {
+                digit('1');       
+                var botao = document.getElementById("one");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '2') {
+                digit('2');
+                var botao = document.getElementById("two");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '3') {
+                digit('3');
+                var botao = document.getElementById("three");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '4') {
+                digit('4');
+                var botao = document.getElementById("four");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '5') {
+                digit('5');
+                var botao = document.getElementById("five");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '6') {
+                digit('6');
+                var botao = document.getElementById("six");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '7') {
+                digit('7');
+                var botao = document.getElementById("seven");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '8') {
+                digit('8');
+                var botao = document.getElementById("eight");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '9') {
+                digit('9');
+                var botao = document.getElementById("nine");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '+') {
+                digit(event.key);
+                var botao = document.getElementById("sum");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '-') {
+                digit(event.key);
+                var botao = document.getElementById("subtract");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '*') {
+                digit(event.key);
+                var botao = document.getElementById("multiply");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '/') {
+                digit(event.key);
+                var botao = document.getElementById("divide");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === '.') {
+                digit(event.key);
+                var botao = document.getElementById("dot");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === 'Enter') {
+                solve(); 
+                var botao = document.getElementById("solvebt");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            } else if (event.key === 'Escape') {
+                clearInput(); 
+                var botao = document.getElementById("clearbt");
+                botao.classList.add("anime");
+                setTimeout(function() {
+                    botao.classList.remove("anime"); 
+                }, 100);
+            }
+        });
+        
+        document.addEventListener("keyup", function(event) {
+            // Verifique se a tecla pressionada é um dígito numérico (0-9)
+            if (event.key.match(/[0-9]/)) {
+                // Remova a classe de animação do botão correspondente quando a tecla for liberada
+                const button = document.querySelector(`button[data-key="${event.key}"]`);
+                if (button) {
+                    button.classList.remove("button-pressed");
+                }
+            }
+        });
+        
+        </script>
 </body>
 </html>
