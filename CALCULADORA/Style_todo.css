@@ -1,0 +1,192 @@
+/* Estilos para o body */
+body {
+    
+    background-image: url(assets/fundo1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Estilos para o cabeçalho (.header) */
+.header {
+    font-size: 50px;
+}
+
+/* Estilos para o conteúdo inserido (.contentInsert) */
+.contentInsert {
+    display: flex;
+    align-items: center;
+    translate: 25px; /* Correção: Deve ser "transform" ao invés de "translate" */
+    flex-wrap: wrap;
+}
+
+/* Estilos para a entrada de nova tarefa (.newTaskInput) */
+.newTaskInput {
+    width: 150px;
+    height: 5px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    padding: 16px;
+    font-size: 15px;
+}
+
+.newTaskInput::placeholder {
+    color: rgb(190, 190, 191);
+    font-size: small;
+}
+
+/* Estilos para o botão de nova tarefa (.newTaskBtn) */
+.newTaskBtn {
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    background-color: rgb(164, 164, 164);
+    translate: -38px; /* Correção: Deve ser "transform" ao invés de "translate" */
+}
+
+.to_do {
+    padding: 10px;
+    color: aliceblue;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(134, 134, 134, 0.5);
+    border-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    height: auto;
+    display: flex;
+    
+}
+
+.newTaskBtn:hover {
+    background-color: #c8cbb2;
+    color: white;
+    transform: translate(-0.5rem, -0.5rem);
+}
+
+#donelist {
+    display: flex;
+    align-items: end;
+    margin: 4px;
+}
+
+#donelist li {
+    transform: translate(15px);
+    margin: 8px;
+    width: 150px;
+    list-style-type: none;
+    
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.4s;
+    background-color: rgb(34, 34, 34);
+    padding: 5px;
+    border-radius: 5px;
+    height: 30px;
+    color: rgb(87, 87, 87);
+}
+
+/* Estilos para a lista de tarefas (#todolist) */
+#todolist {
+    display: flex;
+    align-items: end;
+    margin: 4px;
+}
+
+#todolist li {
+    margin: 8px;
+    width: 150px;
+    list-style-type: none;
+    
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.4s;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-radius: 5px;
+    height: 25px;
+    color: rgb(0, 0, 0);
+}
+
+#todolist li:hover {
+    background-color: rgb(77, 77, 77);
+    color: aliceblue;
+    transform: translateX(-5%);
+}
+
+/* Estilos para o botão OK (.okBt) */
+.okBt {
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+    transition: 0.4s;
+    background-color: rgb(164, 164, 164);
+    transform: translate(14%, -14%);
+}
+
+.okBt:hover {
+    background-color: #939c8c;
+    color: aliceblue;
+    transform: translate(0, -0.5rem);
+    border: 5px;
+    border-color: white;
+    box-shadow: 1rem;
+}
+
+/* Estilos para o botão de limpar (.clearBtn) */
+.clearBtn {
+    translate: 25px;
+    margin-top: 10px;
+    height: 25px;
+    width: 50px;
+    cursor: pointer;    
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+
+.clearBtn:hover {
+    background-color: rgb(160, 29, 34);
+    color: aliceblue;
+    transform: scale(1.1);
+    border: 5px;
+    border-color: white;
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Classe para animação de fade out */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.content {
+    margin-left: 2px;
+}
