@@ -1,6 +1,7 @@
 
 const input = document.getElementById("input");
 
+
 function digit(char) {
     var valorAtual = input.innerText;
 
@@ -170,3 +171,32 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
+var tempo = 1;
+var contador =  document.querySelector('.contador');
+var cronometro;
+
+function start(){
+    cronometro = setInterval(() => {
+        show(tempo);
+        tempo++;
+    }, 1000);
+}
+
+function show(seg) {
+    var hour = Math.floor(seg/3600);
+    var minute = Math.floor(seg/60);
+    var second = seg % 60;
+
+    var contagem = `${hour < 10 ? '0' : ''}${hour}:${minute < 10 ? '0' : ''}${minute}:${second < 10 ? '0' : ''}${second}`;;
+    contador.textContent = contagem;
+}
+
+function pause() {
+    clearInterval(cronometro);
+}
+
+function reset() {
+    clearInterval(cronometro);
+    tempo = 1;
+    contador.innerHTML = '00:00:00';
+}
